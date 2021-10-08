@@ -26,13 +26,13 @@ print('————————————————————————�
 
 print("I'm sorry that I just can invite only two person now. Thanks for watching this.")
 
-for guest in guests[:-2]:
-    message = f'''Dear {guest}:
-    I'm sorry for not being able to fulfill the previous agreement for some reason,
-    thank you for watching.
-    '''
+for i in range(len(guests)-2):
+    message = f'''Dear {guests[0]}:
+        I'm sorry for not being able to fulfill the previous agreement for some reason,
+        thank you for watching.
+        '''
     print(message)
-    guests.remove(guest)
+    guests.pop(0)
 
 print('——————————————————————————————————————————————————————————————————')
 
