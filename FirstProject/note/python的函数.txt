@@ -1,0 +1,49 @@
+Number
+    abs() 绝对值 | .__add__(x) 加x | .__sub__(x) 减x
+
+Str
+    .title() 首字母大写 | len(str) 查看字符串长度 | .lstrip() 去除首部空格 | .rstrip() 去除尾部空格 | .strip() 去除两边空格
+
+List []
+    添加
+        .append(obj) 追加元素
+        .insert(index, obj) 往索引index处插入一个元素
+        .extend(list) 追加列表
+    删除
+        .pop(index) 删除索引index处的元素,不写默认最后一个
+        .remove(x) 删除list列表里值为x的元素,如不存在报错ValueError(值不存在于列表中)
+        (语句) del list[index] 删除list集合索引index
+    修改
+        list[index] = x 将list集合里索引index处的值修改为x
+    查询
+        len(list) 查看元素个数
+    排序
+        .sort() 升序排序
+        .sort(reverse=True) 反转,降序排序;如果=False,则为升序排序
+        sorted(list) 临时排序,不对原列表进行修改
+        .reverse() 排序元素翻转
+
+Tuple ()
+    与列表类似,不可变
+
+Dict {}
+    K - V 以键值对的形式存储内容
+    键不可重复，如若重复，值会进行覆盖。
+    添加/修改
+        dict[key] = xxx , 如果key存在于原字典，则进行值覆盖;不存在就添加键-值
+    删除
+        .pop(key) 删除键为key的键值对
+        del dict[key] 删除键为key的键值对
+
+Set {}
+    不存在重复元素
+    列表 -> 集合 , 可以自动去重
+    可以进行集合运算
+    与字典类似,但不存储value,只有key
+    set() 创建空集合用
+    set(list) 用列表创建一个集合
+    集合运算 -差 |并 &交 ^补
+    添加
+        .add(x) 添加键x
+        .update([x, y, z]) 添加键x,y,z
+        .remove(x) 去除键x
