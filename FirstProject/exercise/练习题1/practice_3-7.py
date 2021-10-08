@@ -43,4 +43,7 @@ for guest in guests[:]:
     print(message)
     guests.pop(0)
 
+print('——————————————————————————————————————————————————————————————————')
+
 print(guests)
+
