@@ -41,6 +41,6 @@ for guest in guests[:]:
     Although I just only invite two person, can you receive it to take my dinner?
     '''
     print(message)
-    guests.remove(guest)
+    guests.pop(0)
 
 print(guests)
