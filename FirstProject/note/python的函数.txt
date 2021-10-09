@@ -55,7 +55,13 @@ Set {}
     set() 创建空集合用
     set(list) 用列表创建一个集合
     集合运算 -差 |并 &交 ^补
+    .difference(iter) 差集
+    .update(iter) 并集
+    .intersection(iter) 交集
+    .symmetric_difference(iter) 补集
     添加
         .add(x) 添加键x
         .update([x, y, z]) 添加键x,y,z
+    删除
         .remove(x) 去除键x
+        .clear() 清空

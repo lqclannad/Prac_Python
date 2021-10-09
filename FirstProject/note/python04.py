@@ -27,6 +27,13 @@
 #     print(a)
 # for a in range(1, 5, 2):
 #     print(a)
+a = {1, 5, 4, 3, 2, 6}
+# a = a ^ {8, 2, 3}
+a.symmetric_difference({8, 2, 3})
+print(a)
+a = a.intersection({4, 5, 6})   # 交集
+print(a)
+
 
 '''
 条件语句 if 

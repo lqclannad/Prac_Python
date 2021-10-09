@@ -16,4 +16,28 @@
 # zhangming
 # 20
 # 100
-# python类的使用知识需要了解一下...
+class Student():
+    def __init__(self, name: str, age: int, grade: list):
+        self.name = name
+        self.age = age
+        self.grade = grade
+
+    def get_name(self):
+        return self.name
+
+    def get_age(self):
+        return self.age
+
+    def get_course(self):
+        return max(self.grade)
+
+
+if __name__ == '__main__':
+    zm = Student('zhangming', 20, [69, 88, 100])
+    mz = Student('mingzhang', 30, [73, 62, 89])
+    print(zm.get_name())
+    print(zm.get_age())
+    print(zm.get_course())
+    print(mz.get_name())
+    print(mz.get_age())
+    print(mz.get_course())
