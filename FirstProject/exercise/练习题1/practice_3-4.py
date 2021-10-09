@@ -1,5 +1,5 @@
 # _*_ coding:utf-8 _*_
-# 我的名字: Administrator-LQ
+# 我的名字: liev-LQ
 # 创建时间: 2021/10/07 19:31
 # 文件名称: practice_3-4.py
 # 开发工具: Pycharm
