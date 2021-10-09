@@ -1,0 +1,78 @@
+参考：https://www.runoob.com/python/python-built-in-functions.html
+abs(x) -> 返回 x 的绝对值
+divmod(a, b) -> 返回 a 除以 b 的商和余数
+input() -> 输入函数
+open() -> 打开文件
+staticmethod(func) -> 返回func函数的静态方法
+all(iter) -> 判断给定iter里的所有元素是否都为True, 是返回True, 反之False
+enumerate(list) -> 返回可遍历的对象(迭代参数为其索引和对应的值)
+int() -> 强制转换为int类型
+ord(str) -> 返回str的ASCII数值
+str() -> 强制转换为str类型
+any(iter) -> 判断给定iter里的所有元素是否都为False, 是返回False, 反之True
+eval(exp) -> 执行exp表达式 eg: eval('2+2')
+isinstance(object, classinfo) -> 判断object是否是一个已知的类型 eg: isinstance(2, int)
+pow(x, y) -> 返回x的y次方
+sum(iter, int) -> 对序列进行求和计算,iter可以是list、tuple
+basestring() ->
+execfile()
+issubclass()
+print()
+super()
+bin()
+file()
+iter()
+property()
+tuple()
+bool()
+filter()
+len()
+range()
+type()
+bytearray()
+float()
+list()
+raw_input()
+unichr()
+callable()
+format()
+locals()
+reduce()
+unicode()
+chr()
+frozenset()
+long()
+reload()
+vars()
+classmethod()
+getattr()
+map()
+repr()
+xrange()
+cmp()
+globals()
+max()
+reverse()
+zip()
+compile()
+hasattr()
+memoryview()
+round()
+__import__()
+complex()
+hash()
+min()
+set()
+delattr()
+help()
+next()
+setattr()
+dict()
+hex()
+object()
+slice()
+dir()
+id()
+oct()
+sorted()
+exec内置表达式
