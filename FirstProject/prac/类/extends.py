@@ -16,13 +16,20 @@ class B(A):
     def pr(self):   # 子类覆盖父类方法
         print('B')
 
+    def __init__(self, name):
+        self.name = name
+        print(self.name)
+
 
 class C(B, A):  # 多继承
     a = 3
+
+    def __init__(self, name):
+        super().__init__(name)  # 通过超类将name传至父类
 
     def pr(self):   # 子类覆盖父类方法
         print('C')
 
 
-c = C()
+c = C("张三")
 c.pr()
