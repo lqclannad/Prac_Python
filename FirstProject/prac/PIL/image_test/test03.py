@@ -1,11 +1,10 @@
 import PIL.Image as image
 import PIL.ImageDraw as draw
 import PIL.ImageFont as imgfont
-import PIL.ImageFilter as ifr
 import random
 font = imgfont.truetype("../font/msyh.ttc", 60)
 
-
+# 四字母验证码
 def randchar():
     # 生成随机字母
     return chr(random.randint(65, 90))
@@ -33,9 +32,11 @@ def img():
 if __name__ == '__main__':
     img = img()
     image = draw.Draw(img)
-    for x in range(w):
-        for y in range(h):
+    for x in range(w):      # 遍历宽
+        for y in range(h):  # 遍历高
+            # 逐个像素点填充
             image.point((x, y), fill=b_color())
+    # 填充四个随机字母
     for i in range(4):
         image.text((60*i+10, 30), text=randchar(), fill=f_color(), font=font)
     img.show()
