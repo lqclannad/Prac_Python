@@ -8,7 +8,6 @@ from mpl_toolkits.mplot3d import Axes3D
 import numpy as np
 
 # 三维画点
-'''
 x = np.random.normal(0, 1, 100)
 y = np.random.normal(0, 1, 100)
 z = np.random.normal(0, 1, 100)
@@ -17,11 +16,12 @@ fig = plt.figure()
 ax = Axes3D(fig)
 ax.scatter(x, y, z)
 plt.show()
-'''
 
 # 二维散点图
+'''
 n = 1000
 x = np.random.randn(n)
 y = np.random.randn(n)
 plt.scatter(x, y)
 plt.show()
+'''

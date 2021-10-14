@@ -6,7 +6,7 @@
 import cv2
 
 # ★★★ opencv
-img = cv2.imread("../image/92420327_p0_master1200.jpg")
+img = cv2.imread("../image/92307362_p0_master1200.jpg")
 
 blue = (255, 0, 0)
 # 画线

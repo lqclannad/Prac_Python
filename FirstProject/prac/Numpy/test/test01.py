@@ -33,12 +33,10 @@ print(b)
 '''
 a = np.zeros(shape=[4, 10],dtype=np.float32)
 b = np.ones(shape=[4, 10],dtype=np.float32)
-c = np.empty(shape=[4, 10],dtype=np.float32)
+# c = np.empty(shape=[4, 10],dtype=np.float32)  # 很少用
 print(a)
 print(b)
 print(c)
-'''
-
 a = np.zeros(shape=[4, 10],dtype=np.float32)  # 8,5,2,6(one-hot)
 # b = a[:,8]
 # print(b)
@@ -52,7 +50,10 @@ for i, k in enumerate(a):
     else:
         k[6] = 1
 print(a)
+'''
 
+# 二维数组的轴使用
+'''
 c = np.argmax(a, axis=1)
 print(c)
 d = np.argmin(a, axis=1)
@@ -61,3 +62,30 @@ e = np.min(a, axis=1)
 print(e)
 f = np.max(a, axis=1)
 print(f)
+'''
+
+# 三维数组的轴使用
+'''
+a = np.arange(24).reshape(2, 3, 4)
+print(a, "\n")
+b = np.max(a, axis=1)
+print(b, "\n")
+
+print(np.linspace(0, 2, 9), "\n")
+print(np.linspace(0, 2*np.pi, 100))
+'''
+
+a = np.zeros(shape=[4, 10],dtype=np.float32)  # 8,5,2,6(one-hot)
+
+'''
+a[0, 8] = 1
+a[1, 5] = 1
+a[2, 2] = 1
+a[3, 6] = 1
+# ——————————
+a[:1,8] = 1
+a[1:2,5] = 1
+a[2:3,2] = 1
+a[3:4,6] = 1
+'''
+print(a)

@@ -4,7 +4,7 @@ import PIL.ImageFont as imgfont
 import PIL.ImageFilter as ifr
 import numpy
 
-font = imgfont.truetype("../font/STXINGKA.TTF", 30)
+font = imgfont.truetype("../font/msyh.ttc", 30)
 # img1 = image.open("../image/93271202_p0_master1200.jpg")
 img1 = image.open("../image/img.png")
 # 查看图片的像素点
