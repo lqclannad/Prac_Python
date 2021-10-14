@@ -1,0 +1,15 @@
+Pandas简介：
+    pannel data analysis(画板数据分析)。
+    pandas是基于numpy构建的，为时间序列分析提供了很好的支持。
+    pandas中有两个主要的数据结构，一个是Series，另一个是DataFrame。
+
+数据结构Series:
+    Series类似于一维数组与字典(map)数据结构的结合。
+    它由一组数据和一组与数据相对应的数据标签(索引index)组成。
+    这组数据和索引标签的基础都是一个一维ndarray数组。可将index索引理解为行索引。
+    Series的表现形式为：左边索引，右边数据。
+
+数据结构DataFrame
+    DataFrame是一个类似表格的数据结构，索引包括列索引和行索引，
+    包含有一组有序的列，每列可以是不同的值类型(数值、字符串、布尔值等)。
+    DataFrame的每一行和每一列都是一个Series，这个Series的name属性为当前的行索引名/列索引名。
