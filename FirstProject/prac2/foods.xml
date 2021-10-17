@@ -1,0 +1,66 @@
+<?xml version="1.0" ?>
+<annotations shelf="xxx">
+	<annotation verified="no">
+		<folder>Arizmendi Bakery</folder>
+		<filename>000001.jpg</filename>
+		<source>
+			<database>Unknown</database>
+		</source>
+		<size>
+			<width>194</width>
+			<height>260</height>
+			<depth>3</depth>
+		</size>
+		<segmented>0</segmented>
+		<object>
+			<name>78</name>
+			<pose>Unspecified</pose>
+			<truncated>0</truncated>
+			<difficult>0</difficult>
+			<bndbox>
+				<xmin>33</xmin>
+				<ymin>38</ymin>
+				<xmax>73</xmax>
+				<ymax>61</ymax>
+			</bndbox>
+		</object>
+	</annotation>
+	<annotation verified="yes">
+		<folder>VOC2007</folder>
+		<filename>000002.jpg</filename>
+
+		<source>
+			<database>Unknown</database>
+		</source>
+		<size>
+			<width>519</width>
+			<height>362</height>
+			<depth>3</depth>
+		</size>
+		<segmented>0</segmented>
+		<object>
+			<name>59</name>
+			<pose>Unspecified</pose>
+			<truncated>0</truncated>
+			<difficult>0</difficult>
+			<bndbox>
+				<xmin>239</xmin>
+				<ymin>52</ymin>
+				<xmax>425</xmax>
+				<ymax>161</ymax>
+			</bndbox>
+		</object>
+		<object>
+			<name>59</name>
+			<pose>Unspecified</pose>
+			<truncated>0</truncated>
+			<difficult>0</difficult>
+			<bndbox>
+				<xmin>87</xmin>
+				<ymin>177</ymin>
+				<xmax>245</xmax>
+				<ymax>294</ymax>
+			</bndbox>
+		</object>
+	</annotation>
+</annotations>

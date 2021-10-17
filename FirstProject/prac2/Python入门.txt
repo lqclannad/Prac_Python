@@ -1,4 +1,52 @@
 > Python文件操作
 > JSON、XML
+    JSON（JavaScript Object Notation）是一种轻量级的数据交换格式。
+    python3中可以使用json模块来对JSON数据进行编解码，它包含了两个函数：
+        json.dumps(): 对数据进行编码。
+        json.loads(): 对数据进行解码。
+        josn.dump(): 对文件进行编码。
+        json.load(): 对文件进行解码。
+    XML指可扩展标记语言。XML被涉及用来传输和存储数据。它是一套定义语义
+    标记的规则，这些标记将文档分成许多部件并对这些部件加以标识。
+    python有三种方法解析XML，①SAX、②DOM、③ElementTree
+        ①SAX(simple API for XML): python标准库包含SAX解析器，SAX
+        用事件驱动模型，通过在解析XML的过程中触发一个个的事件并调用用户
+        定义的回调函数来处理XML文件。SAX是一种基于事件驱动的API。利用
+        SAX解析XML文档牵涉到两个部分:解析器和事件处理器。解析器负责读
+        取XML文档，并向事件处理器发送事件，如元素开始及结束事件;而事件
+        处理器则负责对事件作出处理。
+        优点: SAX流式读取XML文件，比较快，占用内存少。
+        缺点: 需要用户实现回调函数（handler）。
+        ②DOM(Document Object Model): 将XML数据在内存中解析成一个树，
+        通过对树的操作来操作XML。一个DOM的解析器在解析一个XML文档时，一
+        次性读取整个文档，把文档中所有元素保存在内存中的一个树结构李，之后
+        你可以把修改过的内容写入xml文件。
+        优点: 使用DOM的好处是你不需要对状态进行追踪，因为每一个节点都知道
+        谁是它的父节点，谁是子节点。
+        缺点: DOM需要将XML数据映射到内存中的树，一是比价漫，而是比较耗内
+        存，使用起来也比较麻烦！
+        ③ElementTree(元素树): ElementTree就像一个轻量级的DOM，具有方
+        便友好的API。代码可用性好，速度快，消耗内存少。
+        两种实现:
+            ElementTree生来就是为了处理XML，它在python标准库中有两种实现。
+            一种是纯python实现，例如: xml.etree.ElementTree
+            另外一种是速度快一点的: xml.etree.cElementTree
+            尽量使用C语言实现的那种，因为它速度更快，而且消耗的内存更少！在程序
+            中可以这样写:
+                try:
+                    import xml.etree.cElementTree as ET
+                except ImportError:
+                    import xml.etree.ElementTree as ET
+        常用方法:
+            # 当要获取属性值时，用attrib方法。
+            # 当要获取节点值时，用text方法。
+            # 当要获取节点名时，用tag方法。
+    相比而言，第三种方法既方便又快速。
+
 > Python多线程
+    使用Lock的情况
+        lock在不同线程使用同一共享内存时，能够确保线程之间互不影响，使用lock的
+        方法时，在每个线程执行运算修改共享内存之前，执行lock.acquire()将共享
+        内存上锁，确保当前线程执行时，内存不会被其他线程访问，执行运算完毕后，使
+        用lock.release()将锁打开，保证其他的线程可以使用该共享内存。
 > Python日期和时间
