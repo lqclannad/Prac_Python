@@ -30,7 +30,7 @@ class Line(nn.Module):
 
 if __name__ == '__main__':
     line = Line()
-    # 定义损失函数(均方案)
+    # 定义损失函数(均方差)
     loss_func = nn.MSELoss()
     # 梯度下降优化器
     opt = torch.optim.SGD(line.parameters(), lr=0.1)    # lr=0.1 代指步长

@@ -50,3 +50,12 @@ print(b)
 print(c)
 '''
 
+# resize reshape
+a = np.floor(10*np.random.random((3,4)))
+print('a: ', a)
+# ravel - 返回被压扁的数组
+print('a.ravel(): ', a.ravel())
+# reshape - 改变数组原有形状
+print('a.reshape(6,2): ', a.reshape(6,2))
+print('a.shape:', a.shape)
+print('a.T.shape:', a.T.shape)
