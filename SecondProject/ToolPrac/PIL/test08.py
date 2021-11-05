@@ -11,7 +11,7 @@ from PIL import Image
 plt.ion()
 while True:
     for i in os.listdir("img"):
-        img = Image.open(os.path.join("img/",i))
+        img = Image.open(os.path.join("img/", i))
         plt.clf()
         plt.axis(False)
         plt.imshow(img)
