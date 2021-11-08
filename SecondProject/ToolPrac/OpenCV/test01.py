@@ -7,7 +7,7 @@
 import cv2.cv2 as cv2
 
 # cap = cv2.VideoCapture(0)  # 读取摄像头
-# cap = cv2.VideoCapture("https://c1.monidai.com/20211031/G35ciuMr/index.m3u8")  #读取视频文件
+# cap = cv2.VideoCapture("http://39.134.65.162/PLTV/88888888/224/3221225611/index.m3u8")  #读取视频流
 cap = cv2.VideoCapture("cup.mp4")  #读取视频文件
 
 while (True):
