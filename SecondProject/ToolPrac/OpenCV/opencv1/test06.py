@@ -6,7 +6,7 @@
 import numpy as np
 from cv2 import cv2
 
-img = cv2.imread("img/92307362_p0_master1200.jpg")
+img = cv2.imread("../img/92307362_p0_master1200.jpg")
 # cv2.line(img,(400,250),(625,500),color=(0,0,255),thickness=2)
 # cv2.circle(img,(50,50),30,(255,0,0),2)
 cv2.rectangle(img,(400,250),(625,500),(0,255,0),2)

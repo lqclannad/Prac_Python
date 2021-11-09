@@ -5,8 +5,8 @@
 # 文件名: test10.py
 from cv2 import cv2
 
-img1 = cv2.imread("img/92307362_p0_master1200.jpg")
-img2 = cv2.imread("img/lqclannad_822x1200.png")
+img1 = cv2.imread("../img/92307362_p0_master1200.jpg")
+img2 = cv2.imread("../img/lqclannad_822x1200.png")
 
 dst1 = cv2.add(img1, img2)
 dst2 = cv2.addWeighted(img1,0.7,img2,0.3,0)
