@@ -1,0 +1,20 @@
+收集数据->模型设计->测试评估->模型部署
+
+1.数据 data
+    创建继承自Dataset模型
+    初始化init、len、getitem三个方法
+    init中加载数据集
+    len统计数据长度
+    getitem处理数据
+2.模型 net
+    创建继承自nn.Module模型
+    初始化init、forward这两个方法
+    init中设计模型
+    forward进行前向计算
+3.训练 train
+    创建训练类
+    初始化init、call这两个方法
+    init中加载数据和模型
+    call中用模型训练数据
+4.测试 test
+5.保存部署 save load

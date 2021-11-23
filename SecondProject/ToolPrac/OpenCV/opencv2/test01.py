@@ -7,6 +7,7 @@ import cv2
 import numpy as np
 
 img = cv2.imread("../img/LQCLANNAD.png")
+# 卷积核
 kernel = np.array([[1,1,0],[1,0,-1],[0,-1,-1]],np.float32)
 # 二维的滤波器 高通滤波
 dst = cv2.filter2D(img, -1, kernel)
