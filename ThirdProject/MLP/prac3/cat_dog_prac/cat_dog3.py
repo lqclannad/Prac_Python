@@ -15,7 +15,7 @@ DEVICE = "cuda"
 
 dataset = MyDataset("E:\data\cat_dog\img")
 data_loader = DataLoader(dataset,batch_size=512,shuffle=True,num_workers=0)
-summaryWriter = SummaryWriter("logs1")
+# summaryWriter = SummaryWriter("logs3")
 
 if __name__ == '__main__':
     net = net3().to(DEVICE)
@@ -35,5 +35,5 @@ if __name__ == '__main__':
 
             if i%10==0 and i!=0:
                 print(loss)
-                summaryWriter.add_scalar("loss",loss,step)
+                # summaryWriter.add_scalar("loss",loss,step)
                 step+=1

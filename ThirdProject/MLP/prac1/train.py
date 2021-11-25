@@ -8,7 +8,7 @@ from torch import optim, nn
 from data import MNISTDataset, DataLoader
 from net import net_v1
 
-DEVICE = "cuda"
+DEVICE = "cpu"
 
 class Trainer:
     def __init__(self,root):
@@ -37,8 +37,8 @@ class Trainer:
                 self.opt.zero_grad()
                 loss.backward()
                 self.opt.step()
-                if i%10==0:
-                    print(loss)
+                # if i%10==0:
+                print(loss)
 
 
 if __name__ == '__main__':

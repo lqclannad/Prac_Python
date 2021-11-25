@@ -15,7 +15,7 @@ DEVICE = "cuda"
 
 dataset = MyDataset("E:\data\cat_dog\img")
 data_loader = DataLoader(dataset,batch_size=512,shuffle=True)
-summaryWriter = SummaryWriter("logs")
+summaryWriter = SummaryWriter("logs2")
 
 if __name__ == '__main__':
     net = net2().to(DEVICE)
