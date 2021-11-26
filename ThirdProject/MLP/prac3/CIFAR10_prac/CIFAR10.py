@@ -58,6 +58,7 @@ if __name__ == '__main__':
 
     step = 0
     test_step = 0
+    _step = 0
     for epoch in range(10000):
         sum_loss = 0
         sum_acc = 0
@@ -107,20 +108,32 @@ if __name__ == '__main__':
             acc = torch.mean(torch.eq(torch.argmax(out, dim=1), torch.argmax(label, dim=1)).float())
             test_sum_acc = test_sum_acc + acc
             test_sum_loss = test_sum_loss + loss
-            sum_score = sum_score + torch.sum(torch.eq(out, label).float())
+            sum_score = sum_score + torch.sum(torch.eq(torch.argmax(out, dim=1), torch.argmax(label, dim=1)).float())
             if i % 10 == 0 and i != 0:
                 _loss = test_sum_loss / 10
                 _acc = test_sum_acc / 10
-                _score = sum_score / len(test_data)
                 # summaryWriter.add_scalar("test_acc", _acc, test_step)
                 # summaryWriter.add_scalar("test_loss", _loss, test_step)
                 # summaryWriter.add_scalar("test_score", _score, test_step)
-                summaryWriter.add_scalars("test", {"test_acc": _acc, "test_loss": _loss, "test_score": _score},
+                summaryWriter.add_scalars("test", {"test_acc": _acc, "test_loss": _loss},
                                           test_step)
                 print("acc:", _acc.item())
                 print("loss:", _loss.item())
-                print("score:", _score)
                 test_sum_acc = 0
                 test_sum_loss = 0
-                sum_score = 0
                 test_step += 1
+        print('''
+        ====================================================
+        ====================================================
+        ====================================================
+        ====================================================
+        
+        ''')
+        _score = sum_score.item() / len(test_data)
+        summaryWriter.add_scalar("score",_score,_step)
+        print("score:", _score)
+        sum_score = 0
+        _step += 1
+
+
+

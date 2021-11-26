@@ -13,8 +13,12 @@ from net3 import net3
 
 DEVICE = "cuda"
 
-dataset = MyDataset("E:\data\cat_dog\img")
-data_loader = DataLoader(dataset,batch_size=512,shuffle=True,num_workers=0)
+train_dataset = MyDataset("E:\data\cat_dog",True)
+train_loader = DataLoader(train_dataset,batch_size=512,shuffle=True)
+
+test_dataset = MyDataset("E:\data\cat_dog",True)
+test_loader = DataLoader(test_dataset,batch_size=512,shuffle=True)
+
 # summaryWriter = SummaryWriter("logs3")
 
 if __name__ == '__main__':
@@ -23,7 +27,7 @@ if __name__ == '__main__':
     loss_func = nn.MSELoss()
     step=0
     for epoch in range(10000):
-        for i,(img,tag) in enumerate(data_loader):
+        for i,(img,tag) in enumerate(train_loader):
             img,tag = img.to(DEVICE), tag.to(DEVICE)
             img = img.reshape(-1,3,100,100).float()
             out = net(img)

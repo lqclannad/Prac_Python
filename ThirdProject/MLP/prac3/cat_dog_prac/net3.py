@@ -45,6 +45,7 @@ class net3(nn.Module):
 
 if __name__ == '__main__':
     net = net3()
+    # 传入卷积的小批量图像的形状应为(n,c,h,w)
     x = torch.randn(1,3,100,100)
     y = net(x)
     print(y.shape)

@@ -12,12 +12,13 @@ import torch
 
 
 class MyDataset(Dataset):
-    def __init__(self, root):
+    def __init__(self, root, is_train):
         super().__init__()
         self.dataset = []
-        for filename in os.listdir(root):
-            tag = filename[0]
-            self.dataset.append((root + "/" + filename, tag))
+        sub_dir = "TRAIN" if is_train else "TEST"
+        for tag in os.listdir(f"{root}/{sub_dir}"):
+            for filename in os.listdir(f"{root}/{sub_dir}/{tag}"):
+                self.dataset.append((root + "/" + sub_dir + "/" + tag + "/" + filename, tag))
 
     def __len__(self):
         return len(self.dataset)
@@ -26,13 +27,15 @@ class MyDataset(Dataset):
         data = self.dataset[index]
         img = PIL.Image.open(data[0])
         img = np.array(img) / 255
-        tag = torch.tensor([int(data[1])], dtype=torch.float32)
-        return img, tag
+        tag = torch.tensor([int(data[1])])
+        return np.float32(img), np.float32(tag)
 
 
 if __name__ == '__main__':
-    data = MyDataset("E:/data/cat_dog/img")
+    data = MyDataset("E:/data/cat_dog",True)
     data_loader = DataLoader(data,batch_size=512,shuffle=True)
     for i,(img,tag) in enumerate(data_loader):
+        print("img",img)
+        print(tag)
         print(img.shape)
         print(tag.shape)

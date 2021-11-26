@@ -1,11 +1,11 @@
-# _*_ coding:utf-8 _*_
-# 我的名字: Administrator-LQ
-# 创建时间: 2021/11/22 18:04
-# 文件名称: data.py
-# 开发工具: Pycharm
+# coding: utf-8
+# 用户: 刘泉
+# 时间: 2021/11/26 13:04
+# 平台: PyCharm
+# 文件名: data2.py
 import os
 
-import cv2
+from cv2 import cv2
 import numpy as np
 from torch.utils.data import Dataset, DataLoader
 
@@ -29,8 +29,9 @@ class MNISTDataset(Dataset):
     def __getitem__(self, index):
         data = self.dataset[index]
 
-        img_data = cv2.imread(data[0], cv2.IMREAD_GRAYSCALE)
-        img_data = img_data.reshape(-1)  # 将数据降为一维
+        img_data = cv2.imread(data[0])
+        img_data = cv2.cvtColor(img_data,cv2.COLOR_BGR2RGB)
+        img_data = img_data.reshape(3,28,28)
         img_data = img_data / 255  # 归一化
 
         # one_hot
@@ -40,13 +41,10 @@ class MNISTDataset(Dataset):
 
 
 if __name__ == '__main__':
-    dataset = MNISTDataset("E:\data\MNIST_IMG",is_train=True)
-    # train_loader = DataLoader(dataset,batch_size=500,shuffle=True)
-    print(len(dataset))
-    dataset = MNISTDataset("E:\data\MNIST_IMG",is_train=False)
-    print(len(dataset))
+    dataset = MNISTDataset("E:\data\MNIST_IMG")
+    train_loader = DataLoader(dataset,batch_size=500,shuffle=True)
     # x - 图像数据 ， y - 标签
-    # for i,(x,y) in enumerate(train_loader):
-    #     print(i)
-    #     print(x.shape)
-    #     print(y.shape)
+    for i,(x,y) in enumerate(train_loader):
+        print(i)
+        print(x.shape)
+        print(y.shape)

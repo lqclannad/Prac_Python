@@ -10,9 +10,7 @@ class net2(nn.Module):
     def __init__(self):
         super().__init__()
         self.fc_layer = nn.Sequential(
-            nn.Linear(3*100*100,784),
-            nn.ReLU(),
-            nn.Linear(784,512),
+            nn.Linear(3*100*100,512),
             nn.ReLU(),
             nn.Linear(512,256),
             nn.ReLU(),
@@ -20,9 +18,17 @@ class net2(nn.Module):
             nn.ReLU(),
             nn.Linear(128,64),
             nn.ReLU(),
+            nn.Linear(64,64),
+            nn.ReLU(),
             nn.Linear(64,32),
             nn.ReLU(),
-            nn.Linear(32,1),
+            nn.Linear(32,32),
+            nn.ReLU(),
+            nn.Linear(32,16),
+            nn.ReLU(),
+            nn.Linear(16,16),
+            nn.ReLU(),
+            nn.Linear(16,1),
             nn.Sigmoid()
         )
 

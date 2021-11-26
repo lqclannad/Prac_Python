@@ -27,20 +27,22 @@ print(c.shape)
 '''
 
 # 数组-图像
-'''
 path = '../image/92307362_p0_master1200.jpg'
 i = img.open(path)
 arr = np.array(i)
 # i.show()
 # image_shape - (n), h, w, c
 # transpose转置x,y轴
-c = np.transpose(arr, [1, 0, 2])
+# c = np.transpose(arr, [1, 0, 2])
+c = np.transpose(arr, [1, 2, 0])
 print(c)
 print(c.shape)
+c = c.reshape(3, 1200, -1)
+print(c.shape)
+
 # 数组转图像
-t = img.fromarray(c)
-t.show()
-'''
+# t = img.fromarray(c)
+# t.show()
 
 # 求和 中间值
 '''
@@ -55,11 +57,11 @@ print(c, '\n')
 '''
 
 # 矩阵相乘
-a = np.arange(12).reshape(4, 3)
-b = np.arange(12).reshape(3, 4)
-print(f'a:\n{a}\n')
-print()
-print(f'b:\n{b}\n')
-print()
-# dot 点乘
-print(f'a*b:\n{np.dot(a, b)}')
+# a = np.arange(12).reshape(4, 3)
+# b = np.arange(12).reshape(3, 4)
+# print(f'a:\n{a}\n')
+# print()
+# print(f'b:\n{b}\n')
+# print()
+# # dot 点乘
+# print(f'a*b:\n{np.dot(a, b)}')

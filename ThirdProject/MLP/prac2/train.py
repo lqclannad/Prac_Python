@@ -73,7 +73,7 @@ class Trainer:
                 test_sum_loss = test_sum_loss + test_loss.cpu().item()
                 # 验证精度
                 sum_score = sum_score + torch.sum(torch.eq(y, tags).float())
-            avg_test_loss = test_sum_loss.item() / len(self.test_loader)
+            avg_test_loss = test_sum_loss / len(self.test_loader)
             score = sum_score / len(self.test_dataset)
             print("test_loss==>", avg_test_loss)
             print("score==>", score)
