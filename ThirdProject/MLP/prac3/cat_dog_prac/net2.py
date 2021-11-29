@@ -3,6 +3,7 @@
 # 时间: 2021/11/24 13:02
 # 平台: PyCharm
 # 文件名: net2.py
+import numpy as np
 from torch import nn
 import torch
 
@@ -38,6 +39,8 @@ class net2(nn.Module):
 
 if __name__ == '__main__':
     net = net2()
-    x = torch.randn(1,3*100*100)
+    x = torch.randn(2,3*100*100)
     y = net(x)
+    print(y)
+    print(y.dtype)
     print(y.shape)

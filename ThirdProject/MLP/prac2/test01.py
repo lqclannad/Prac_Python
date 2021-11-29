@@ -15,11 +15,14 @@ import torch
 # print(b)
 # print(torch.sum(b))
 
-a = torch.Tensor([1,2,45])
-b = torch.Tensor([1,5,45])
-print(torch.sum(torch.eq(a,b).float()/a.shape[0]))
+# a = torch.Tensor([1,2,45])
+# b = torch.Tensor([1,5,45])
+a = torch.Tensor([[1,2,45],[2,4,66]])
+b = torch.Tensor([[1,5,45],[5,7,66]])
+# print(torch.sum(torch.eq(a,b).float()/a.shape[0]))
+print(torch.mean(torch.eq(torch.argmax(a,dim=1),torch.argmax(b,dim=1)).float()))
 print(torch.mean(torch.eq(a,b).float()))
-print(torch.exp(torch.Tensor([1,2,3])))
+# print(torch.exp(torch.Tensor([1,2,3])))
 
 # a = torch.Tensor([2])
 # print(a/2)

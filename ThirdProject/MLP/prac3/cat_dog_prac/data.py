@@ -29,7 +29,7 @@ class MNISTDataset(Dataset):
     def __getitem__(self, index):
         data = self.dataset[index]
 
-        img_data = cv2.imread(data[0], cv2.IMREAD_GRAYSCALE)
+        img_data = cv2.imread(data[0])
         img_data = img_data.reshape(-1)  # 将数据降为一维
         img_data = img_data / 255  # 归一化
 

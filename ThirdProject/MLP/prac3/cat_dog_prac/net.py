@@ -12,7 +12,7 @@ class net_v(nn.Module):
     def __init__(self):
         super().__init__()
         self.fc_layer = nn.Sequential(
-            nn.Linear(100 * 100, 512),
+            nn.Linear(3 * 100 * 100, 512),
             nn.ReLU(),
             nn.Linear(512, 256),
             nn.ReLU(),
@@ -37,6 +37,7 @@ class net_v(nn.Module):
 
 if __name__ == '__main__':
     net = net_v()
-    x = torch.randn(1,100*100)
+    x = torch.randn(1,3*100*100)
     y = net.forward(x)
+    print(y)
     print(y.shape)

@@ -35,7 +35,8 @@ if __name__ == '__main__':
     data = MyDataset("E:/data/cat_dog",True)
     data_loader = DataLoader(data,batch_size=512,shuffle=True)
     for i,(img,tag) in enumerate(data_loader):
-        print("img",img)
+        # print("img",img)
         print(tag)
-        print(img.shape)
-        print(tag.shape)
+        print(tag.dtype)
+        # print(img.shape)
+        # print(tag.shape)

@@ -78,11 +78,8 @@ class Trainer:
                 # 将数据加载到GPU上
                 img, tag = img.to(DEVICE), tag.to(DEVICE)
                 out = self.net(img)
+                print("out:",out)
                 test_loss = self.loss_func(out,tag)
-
-                self.opt.zero_grad()
-                test_loss.backward()
-                self.opt.step()
 
                 acc = torch.mean(torch.eq(torch.argmax(out,dim=1),torch.argmax(tag,dim=1)).float())
                 test_sum_acc = test_sum_acc + acc
