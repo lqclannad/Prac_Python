@@ -27,7 +27,7 @@ class MyDataset(Dataset):
         data = self.dataset[index]
         img = PIL.Image.open(data[0])
         img = np.array(img) / 255
-        tag = torch.tensor([int(data[1])])
+        tag = [int(data[1])]
         return np.float32(img), np.float32(tag)
 
 
@@ -38,5 +38,5 @@ if __name__ == '__main__':
         # print("img",img)
         print(tag)
         print(tag.dtype)
-        # print(img.shape)
+        print(img.shape)
         # print(tag.shape)

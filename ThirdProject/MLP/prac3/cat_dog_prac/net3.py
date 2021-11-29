@@ -10,16 +10,16 @@ class net3(nn.Module):
     def __init__(self):
         super().__init__()
         self.fc_layer = nn.Sequential(
-            nn.Conv2d(3,12,(3,3)),
-            nn.ReLU(),
-            nn.MaxPool2d(2),
-            nn.Conv2d(12,24,(3,3)),
+            nn.Conv2d(3,24,(3,3)),
             nn.ReLU(),
             nn.MaxPool2d(2),
             nn.Conv2d(24,48,(3,3)),
             nn.ReLU(),
             nn.MaxPool2d(2),
             nn.Conv2d(48,96,(3,3)),
+            nn.ReLU(),
+            nn.MaxPool2d(2),
+            nn.Conv2d(96,96,(3,3)),
             nn.ReLU(),
             nn.MaxPool2d(2),
             nn.Conv2d(96,192,(3,3)),

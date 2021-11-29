@@ -19,7 +19,7 @@ DEVICE = "cuda"
 
 class Trainer:
     def __init__(self):
-        self.summaryWriter = SummaryWriter("logs11")
+        self.summaryWriter = SummaryWriter("logs1")
         # 加载数据
         self.train_dataset = MNISTDataset("E:/data/cat_dog",True)
         self.train_loader = DataLoader(self.train_dataset,batch_size=500,shuffle=True)

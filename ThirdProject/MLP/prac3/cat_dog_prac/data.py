@@ -45,5 +45,6 @@ if __name__ == '__main__':
     # x - 图像数据 ， y - 标签
     for i,(x,y) in enumerate(train_loader):
         print(i)
+        print(x)
         print(x.shape)
         print(y.shape)
