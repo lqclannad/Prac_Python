@@ -3,7 +3,7 @@
 # 创建时间: 2021/11/10 9:31
 # 文件名称: test05.py
 # 开发工具: Pycharm
-import cv2
+from cv2 import cv2
 import numpy as np
 
 img = cv2.imread("../img/1.jpg")

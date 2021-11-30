@@ -3,7 +3,7 @@
 # 创建时间: 2021/11/17 19:57
 # 文件名称: test10.py
 # 开发工具: Pycharm
-import cv2
+from cv2 import cv2
 
 img = cv2.imread("../img/24.jpg")
 cv2.imshow("img",img)

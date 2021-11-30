@@ -3,7 +3,7 @@
 # 创建时间: 2021/11/10 9:23
 # 文件名称: test02.py
 # 开发工具: Pycharm
-import cv2
+from cv2 import cv2
 
 img = cv2.imread("../img/LQCLANNAD.png")
 
