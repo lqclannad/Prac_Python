@@ -13,74 +13,29 @@ class Classification(nn.Module):
         self.layer1 = nn.Sequential(
             nn.Conv2d(3,48,(3,3)),
             nn.ReLU(),
-            nn.MaxPool2d(2),
+            nn.MaxPool2d(3),
             nn.Conv2d(48,96,(3,3)),
             nn.ReLU(),
-            nn.MaxPool2d(2),
+            nn.MaxPool2d(3),
             nn.Conv2d(96,192,(3,3)),
             nn.ReLU(),
-            nn.MaxPool2d(2),
+            nn.MaxPool2d(3),
             nn.Conv2d(192,384,(3,3)),
             nn.ReLU(),
-            nn.MaxPool2d(2),
-            nn.Conv2d(384,512,(3,3)),
+            nn.MaxPool2d(3),
+            nn.Conv2d(384,512,(3,3),padding=1),
             nn.ReLU(),
-            nn.MaxPool2d(2),
-            nn.Conv2d(512,784,(3,3)),
-            nn.ReLU(),
-            nn.Conv2d(784,784,(3,3)),
-            nn.ReLU(),
-            nn.Conv2d(784,784,(3,3)),
-            nn.ReLU()
         )
 
         self.out_layer1 = nn.Sequential(
-            nn.Linear(784,1),
+            nn.Linear(512*2*2,5),
             nn.Sigmoid()
         )
 
     def forward(self,x):
         out = self.layer1(x)
-        out = out.reshape(-1,784)
+        out = out.reshape(-1,512*2*2)
         return self.out_layer1(out)
-
-
-class Regression(nn.Module):
-    def __init__(self):
-        super().__init__()
-        self.layer2 = nn.Sequential(
-            nn.Conv2d(3,48,(3,3)),
-            nn.ReLU(),
-            nn.MaxPool2d(2),
-            nn.Conv2d(48,96,(3,3)),
-            nn.ReLU(),
-            nn.MaxPool2d(2),
-            nn.Conv2d(96,192,(3,3)),
-            nn.ReLU(),
-            nn.MaxPool2d(2),
-            nn.Conv2d(192,384,(3,3)),
-            nn.ReLU(),
-            nn.MaxPool2d(2),
-            nn.Conv2d(384,512,(3,3)),
-            nn.ReLU(),
-            nn.MaxPool2d(2),
-            nn.Conv2d(512,784,(3,3)),
-            nn.ReLU(),
-            nn.Conv2d(784,784,(3,3)),
-            nn.ReLU(),
-            nn.Conv2d(784,784,(3,3)),
-            nn.ReLU()
-        )
-
-        self.out_layer2 = nn.Sequential(
-            nn.Linear(784,4),
-            nn.Sigmoid()
-        )
-
-    def forward(self,x):
-        out = self.layer2(x)
-        out = out.reshape(-1,784)
-        return self.out_layer2(out)
 
 
 if __name__ == '__main__':
@@ -89,14 +44,5 @@ if __name__ == '__main__':
     y = net1(x)
     print(y)
     print(y.shape)
-    tmp = []    # 存储有小黄人的图像集
-    for i,t in enumerate(y):
-        if t > 0.5:
-            tmp.append((y[i],torch.randn(1,3,300,300)))
-    net2 = Regression()
-    for y in tmp:
-        z = net2(y[1])
-        print(z)
-        print(z.shape)
 
 

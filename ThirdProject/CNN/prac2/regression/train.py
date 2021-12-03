@@ -11,13 +11,13 @@ from torch.utils.data import DataLoader
 from torch.utils.tensorboard import SummaryWriter
 
 from data import MyDataset
-from net import Classification, Regression
+from net import Classification
 
 train_dataset = MyDataset(r"G:/code/python/Prac_Python/ThirdProject/CNN/prac2/regression/data", True)
 test_dataset = MyDataset(r"G:/code/python/Prac_Python/ThirdProject/CNN/prac2/regression/data", False)
 
-train_loader = DataLoader(train_dataset, batch_size=10, shuffle=True)
-test_loader = DataLoader(test_dataset, batch_size=10, shuffle=True)
+train_loader = DataLoader(train_dataset, batch_size=50, shuffle=True)
+# test_loader = DataLoader(test_dataset, batch_size=10, shuffle=True)
 
 DEVICE = "cuda"
 
@@ -25,11 +25,8 @@ summaryWriter = SummaryWriter("logs1")
 
 if __name__ == '__main__':
     net1 = Classification().to(DEVICE)
-    net2 = Regression().to(DEVICE)
     opt1 = optim.Adam(net1.parameters())
-    opt2 = optim.Adam(net2.parameters())
     loss_func1 = nn.MSELoss()
-    loss_func2 = nn.MSELoss()
 
     step = 0
     step2 = 0
@@ -50,20 +47,18 @@ if __name__ == '__main__':
             train_loss = loss_func1(out1, tag1)
             print("t_out:",t_out)
             print("tag1:",tag1)
-            score = torch.sum(torch.eq(t_out, tag1).float())
-            sum_score = sum_score + score
 
             opt1.zero_grad()
             train_loss.backward()
             opt1.step()
 
-            print(train_loss)
+            print("train_loss:",train_loss)
             summaryWriter.add_scalar("train_loss", train_loss, step)
-        _score = sum_score / len(train_dataset)
-        if _score > max_score:
-            # 保存模型的权重
-            torch.save(net1.state_dict(), f"param/classfication1.pt")
 
+            score = torch.sum(torch.eq(t_out, tag1).float())
+            if score > max_score:
+                # 保存模型的权重
+                torch.save(net1.state_dict(), f"param/classfication1.pt")
 
             # out_1 = out1.detach().cpu()
             # print("out_1:", out_1)

@@ -15,10 +15,10 @@ from data2 import MyDataset
 from net2 import Classification, Regression
 
 train_dataset = MyDataset(r"G:/code/python/Prac_Python/ThirdProject/CNN/prac2/regression/data", True)
-test_dataset = MyDataset(r"G:/code/python/Prac_Python/ThirdProject/CNN/prac2/regression/data", False)
+# test_dataset = MyDataset(r"G:/code/python/Prac_Python/ThirdProject/CNN/prac2/regression/data", False)
 
-train_loader = DataLoader(train_dataset, batch_size=30, shuffle=True)
-test_loader = DataLoader(test_dataset, batch_size=30, shuffle=True)
+train_loader = DataLoader(train_dataset, batch_size=50, shuffle=True)
+# test_loader = DataLoader(test_dataset, batch_size=30, shuffle=True)
 
 DEVICE = "cuda"
 
@@ -26,11 +26,11 @@ summaryWriter = SummaryWriter("logs2")
 
 if __name__ == '__main__':
     net1 = Classification().to(DEVICE)
-    net2 = Regression().to(DEVICE)
+    # net2 = Regression().to(DEVICE)
     opt1 = optim.Adam(net1.parameters())
-    opt2 = optim.Adam(net2.parameters())
+    # opt2 = optim.Adam(net2.parameters())
     loss_func1 = nn.MSELoss()
-    loss_func2 = nn.MSELoss()
+    # loss_func2 = nn.MSELoss()
 
     step = 0
     step2 = 0
@@ -38,11 +38,10 @@ if __name__ == '__main__':
         sum_score = 0
         max_score = 0
         for i, target in enumerate(train_loader):
-            img_path_arr = []  # 存储判有小黄人的图片集
+            # img_path_arr = []  # 存储判有小黄人的图片集
             img, tag1, tag2, img_path = target[0], target[1], target[2], target[3]  # 输入图片信息,标签1,标签2
             img, tag1 = img.to(DEVICE), tag1.to(DEVICE)
             img = img.reshape(-1, 1, 300, 300)
-            print("img.shape:", img.shape)
 
             out1 = net1(img)
             t_out = torch.gt(out1, 0.5)
@@ -54,14 +53,15 @@ if __name__ == '__main__':
             train_loss.backward()
             opt1.step()
 
-            print(train_loss)
+            print("train_loss:",train_loss)
             summaryWriter.add_scalar("train_loss", train_loss, step)
 
-        _score = sum_score / len(train_dataset)
-        print("_score:",_score)
-        if _score > max_score:
-            # 保存模型的权重
-            torch.save(net1.state_dict(), f"param/classfication2.pt")
+            score = torch.sum(torch.eq(t_out, tag1).float()) / 20
+
+            print("score:",score)
+            if score > max_score:
+                # 保存模型的权重
+                torch.save(net1.state_dict(), f"param/classfication2.pt")
 
 
 
