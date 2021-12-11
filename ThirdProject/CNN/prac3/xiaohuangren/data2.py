@@ -6,6 +6,7 @@
 import os
 
 import numpy as np
+import torch
 from PIL import Image
 from torch.utils.data import Dataset
 
@@ -18,9 +19,8 @@ class MyDataset(Dataset):
             for i,file_name in enumerate(os.listdir(f"{root}/{sub_dir}/{tag}")):
                 if i == 2500 and sub_dir == "TRAIN": break
                 elif i == 500 and sub_dir == "TEST": break
-                tags = file_name.split(".")[1:5]
-                tags.insert(0, tag)
-                self.dataset.append((f"{root}/{sub_dir}/{tag}/{file_name}", tags))
+                tag2 = file_name.split(".")[1:5]
+                self.dataset.append((f"{root}/{sub_dir}/{tag}/{file_name}", tag, tag2))
 
     def __len__(self):
         return len(self.dataset)
@@ -28,15 +28,15 @@ class MyDataset(Dataset):
     def __getitem__(self, index):
         img = Image.open(self.dataset[index][0])
         img = np.array(img, dtype=np.float32) / 255 - 0.5
-        tags = np.zeros(5)
-        tags[0] = self.dataset[index][1][0]
-        tags[1:] = np.array(self.dataset[index][1][1:], dtype=np.float32) / 300
-        return img, tags
+        tag1 = np.array([self.dataset[index][1]], dtype=np.float32)
+        tag2 = np.array(self.dataset[index][2], dtype=np.float32) / 300
+        return torch.Tensor(img), torch.Tensor(tag1), torch.Tensor(tag2)
 
 
 # 49929 12500
 if __name__ == '__main__':
     data = MyDataset("E:/data/xiaohuangren/data")
     print(len(data))
-    # tag = data[10022][1]
-    # print(tag.dtype)
+    img,tag1,tag2 = data[4000]
+    print(tag1)
+    print(tag2*300)

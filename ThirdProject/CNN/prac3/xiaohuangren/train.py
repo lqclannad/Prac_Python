@@ -18,8 +18,8 @@ from net import Net
 
 train_dataset = MyDataset("E:/data/xiaohuangren/data", True)
 test_dataset = MyDataset("E:/data/xiaohuangren/data", False)
-train_loader = DataLoader(train_dataset,batch_size=100,shuffle=True)
-test_loader = DataLoader(test_dataset,batch_size=50,shuffle=True)
+train_loader = DataLoader(train_dataset,batch_size=50,shuffle=True)
+test_loader = DataLoader(test_dataset,batch_size=10,shuffle=True)
 
 DEVICE = "cuda"
 
@@ -29,7 +29,7 @@ if __name__ == '__main__':
     net = Net().to(DEVICE)
     opt = optim.Adam(net.parameters())
     loss_func = nn.MSELoss()
-    max_iou = 0.3521
+    max_iou = 0
 
     for epoch in range(1000):
         start = time.time()
@@ -56,6 +56,7 @@ if __name__ == '__main__':
             if i%10 == 0 and i!=0:
                 train_avg_loss = train_sum_loss / 10
                 print("train_avg_loss:",train_avg_loss)
+                train_sum_loss = 0
                 train_step += 1
                 summarywriter.add_scalar("train_avg_loss",train_avg_loss,train_step)
         for i, (img, tag) in enumerate(test_loader):
@@ -67,6 +68,7 @@ if __name__ == '__main__':
             if i%10==0 and i!=0:
                 test_avg_loss = test_sum_loss / 10
                 print(i, ":test_avg_loss:", test_avg_loss)
+                test_sum_loss = 0
                 test_step += 1
                 summarywriter.add_scalar("test_avg_loss",test_avg_loss,test_step)
             tag2 = out.detach()
@@ -77,13 +79,14 @@ if __name__ == '__main__':
                     arr2 = tag2[i][1:].cpu()
                     sum_iou = sum_iou + iou(arr1, arr2)
             print(f"iou1:{sum_iou},x:{x}")
-        avg_iou = sum_iou / x
-        if avg_iou > max_iou:   # 0.3521
-            max_iou = avg_iou
-            print("max_iou:", max_iou)
-            torch.save(net.state_dict(), f"param/max_iou.pt")
-            with open('param/max_iou.txt', 'a') as f:
-                f.write(f"最大iou:{max_iou} 时间戳:{time.time()}\n")
+        if x > 0:
+            avg_iou = sum_iou / x
+            if avg_iou > max_iou:
+                max_iou = avg_iou
+                print("max_iou:", max_iou)
+                torch.save(net.state_dict(), f"param/max_iou.pt")
+                with open('param/max_iou.txt', 'a') as f:
+                    f.write(f"最大iou:{max_iou} 时间戳:{time.time()}\n")
         end = time.time()
         print(f"轮次{epoch}花时{(end-start)/60}分钟")
 

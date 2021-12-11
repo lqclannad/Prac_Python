@@ -14,9 +14,12 @@ def iou(arr_1,arr_2):
     x_2 = np.minimum(arr_1[2], arr_2[2])
     y_2 = np.minimum(arr_1[3], arr_2[3])
 
-    inv = (x_2-x_1)*(y_2-y_1)
-    iou = inv/(area_1+area_2-inv)
-    return iou
+    if x_2>x_1 and y_2>y_1:
+        inv = (x_2-x_1)*(y_2-y_1)
+        iou = inv/(area_1+area_2-inv)
+        return iou
+    else:
+        return 0
 
 
 if __name__ == '__main__':
